@@ -8,21 +8,22 @@ import org.springframework.data.solr.core.query.result.FacetFieldEntry;
 
 import com.jianla.ng.solr.model.Product;
 
-public interface ProductRepository extends CrudRepository<Product, String> {
+public interface ProductRepository extends CrudRepository<Product, String>{
 
-    //Page<Product> find(Product product, Pageable page, SortableProduct sort, Direction order);
+	//Page<Product> find(Product product, Pageable page, SortableProduct sort, Direction order);
 
-    /**
-     * 输入关键词后进行查询
-     * 
-     * @param product 输入的关键词
-     * @param page 分页信息PageRequest
-     * @return  分页查询结果
-     */
-    Page<Product> find(Product product, Pageable page, Sort sort);
 
-    Page<Product> find(String searchTerm, Pageable page, Sort sort);
+	/**
+	 * 输入关键词后进行查询
+	 * 
+	 * @param product 输入的关键词
+	 * @param page 分页信息PageRequest
+	 * @return  分页查询结果
+	 */
+	Page<Product> find(Product product, Pageable page, Sort sort);
 
-    Page<FacetFieldEntry> getFacetByFieldName(String fieldName);
+	Page<Product> find(String searchTerm, Pageable page, Sort sort);
+
+	Page<FacetFieldEntry> getFacetByFieldName(String fieldName);
 
 }

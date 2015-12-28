@@ -143,7 +143,9 @@ public class ProductServiceTest {
     private void printPage(Page<Product> products){
     	int totalPages = products.getTotalPages();
 		long totalElements = products.getTotalElements();
-		logger.info("总共找到："+totalElements+"条记录，共有"+totalPages+"页");
+		int number=products.getNumber();
+		int numberOfElements = products.getNumberOfElements();
+		logger.info("总共找到："+totalElements+"条记录，共有"+totalPages+"页,当前页："+number+",当前页个数："+numberOfElements);
 		for(Product pro:products.getContent()){
 			logger.info(pro);
 		}

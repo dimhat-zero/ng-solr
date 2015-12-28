@@ -19,6 +19,7 @@ import org.springframework.util.StringUtils;
 
 import com.jianla.ng.solr.model.Product;
 import com.jianla.ng.solr.model.SearchableProduct;
+import com.jianla.ng.solr.util.RepositoryUtils;
 
 /**
  * 产品repo实现类
@@ -47,31 +48,20 @@ public class ProductRepositoryImpl extends SimpleSolrRepository<Product,String> 
 	 */
 	private void addQuery(Query query, Product product) {
 		if(!StringUtils.isEmpty(product.getOrgName())){//orgname string 
-			this.addCriteria(query,SearchableProduct.ORG_NAME_FIELD,product.getOrgName());
+			RepositoryUtils.addCriteria(query,SearchableProduct.ORG_NAME_FIELD,product.getOrgName());
 		}
 		if(!StringUtils.isEmpty(product.getName())){//name ik
-			this.addCriteriaIK(query, SearchableProduct.NAME_FIELD, product.getName());
+			RepositoryUtils.addCriteriaIK(query, SearchableProduct.NAME_FIELD, product.getName());
 		}
 		if(!StringUtils.isEmpty(product.getDescription())){//description ik
-			this.addCriteriaIK(query, SearchableProduct.DESCRIPTION_FIELD, product.getDescription());
+			RepositoryUtils.addCriteriaIK(query, SearchableProduct.DESCRIPTION_FIELD, product.getDescription());
 		}
 		if(!CollectionUtils.isEmpty(product.getOrgitems())){//orgitem ik list
 			query.addCriteria(new Criteria(SearchableProduct.ORGITEM_FIELD).is(product.getOrgitems()));
 		}
 	}
 	
-	private void addCriteriaIK(Query query,String prop,String searchTerm){
-		String[] words = searchTerm.split(" +");
-		for(String word:words){
-			query.addCriteria(new Criteria(prop).is(word));
-		}
-	}
-	private void addCriteria(Query query,String prop,String searchTerm){
-		String[] words = searchTerm.split(" +");
-		for(String word:words){
-			query.addCriteria(new Criteria(prop).contains(word));
-		}
-	}
+	
 	
 	/**
 	 * 增加过滤条件，一定是全部符合的

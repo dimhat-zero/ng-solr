@@ -5,25 +5,36 @@
 	xmlns:solr="http://www.springframework.org/schema/data/solr"
 	xmlns:util="http://www.springframework.org/schema/util" xmlns:cache="http://www.springframework.org/schema/cache"
 	xmlns:security="http://www.springframework.org/schema/security"
-	xsi:schemaLocation="http://www.springframework.org/schema/data/solr http://www.springframework.org/schema/data/solr/spring-solr-1.0.xsd
+	xsi:schemaLocation="http://www.springframework.org/schema/data/solr http://www.springframework.org/schema/data/solr/spring-solr.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
         http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
         http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
 
-	<context:property-placeholder
-		location="classpath:config.properties"
-		ignore-resource-not-found="true" />
+	<context:property-placeholder location="classpath:config.properties" ignore-resource-not-found="true" />
 
 	<!-- solr服务器地址 -->
-	<solr:solr-server id="solrServer" url="${solr.host}" />
-
+	<solr:solr-server id="solrServer" url="${solr.host}" timeout="1000" maxConnections="1000" />
+	
+	<bean id="solrServerFactory" class="org.springframework.data.solr.server.support.MulticoreSolrServerFactory">
+	    <constructor-arg ref="solrServer" />
+	    <constructor-arg name="cores">
+	        <list>
+	            <value>${solr.index.product}</value>
+	            <value>${solr.index.news}</value>
+	        </list>
+	    </constructor-arg>
+	</bean>
+	<!-- 
+	<solr:repositories base-package="com.jianla.ng.solr.repository" multicore-support="true" solr-template-ref="solrTemplate" />
+	 -->
+	 
 	<!-- 多个core设置不同的solrTemplate -->
-	<bean id="solrProductTemplate" class="org.springframework.data.solr.core.SolrTemplate"
-		scope="singleton">
-		<constructor-arg ref="solrServer" />
-		<constructor-arg value="${solr.product.core.name}" />
+	<!-- 产品 -->
+	<bean id="solrProductTemplate" class="org.springframework.data.solr.core.SolrTemplate" scope="singleton">
+		<constructor-arg ref="solrServerFactory" />
+	    <property name="solrCore" value="${solr.index.product}" />
 	</bean>
 
 	<bean id="productRepository" class="com.jianla.ng.solr.repository.ProductRepositoryImpl">
@@ -34,4 +45,17 @@
 		<property name="productDao" ref="productRepository"/>
 	</bean>
 	
+	<!-- 新闻 -->
+	<bean id="solrNewsTemplate" class="org.springframework.data.solr.core.SolrTemplate">
+		<constructor-arg ref="solrServerFactory" />
+	    <property name="solrCore" value="${solr.index.news}" />
+	</bean>
+	
+	<bean id="newsRepository" class="com.jianla.ng.solr.repository.NewsRepositoryImpl">
+		<property name="solrOperations" ref="solrNewsTemplate" />
+	</bean>
+	
+	<bean id="newsService" class="com.jianla.ng.solr.service.NewsServiceImpl">
+		<property name="newsDao" ref="newsRepository" />
+	</bean>
 </beans>
