@@ -20,6 +20,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.util.Log4jConfigurer;
 
+import com.jianla.ng.solr.model.News;
 import com.jianla.ng.solr.model.Product;
 import com.jianla.ng.solr.model.SearchableProduct;
 
@@ -244,6 +245,14 @@ public class ProductServiceTest {
     	while(entries.hasNext()){
     		Map.Entry entry = (Map.Entry)entries.next();
     		logger.info(entry.getKey()+":"+entry.getValue());
+    	}
+    }
+    
+    @Test
+    public void testRelated(){
+    	List<Product> productList = productService.queryRelated("1", 5);
+    	for(Product product:productList){
+    		logger.info(product);
     	}
     }
 }

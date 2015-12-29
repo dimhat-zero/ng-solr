@@ -41,10 +41,7 @@ public class NewsServiceImpl implements NewsService {
 
 	@Override
 	public Page<News> query(String terms, Pageable page) {
-		News news=new News();
-		news.setTitle(terms);
-		news.setContent(terms);
-		return newsDao.find(news, page, getDefaultSort());
+		return newsDao.find(terms, page, getDefaultSort());
 	}
 
 	@Override
@@ -75,8 +72,14 @@ public class NewsServiceImpl implements NewsService {
 		return highlightList;
 	}
 	
+	@Override
+	public List<News> queryRelated(String docId, int count) {
+		return newsDao.findRelated(docId, count);
+	}
+	
 	public void setNewsDao(NewsRepository newsDao) {
 		this.newsDao = newsDao;
 	}
+
 
 }

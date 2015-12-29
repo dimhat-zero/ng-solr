@@ -42,5 +42,21 @@ public interface NewsService {
 	 */
 	Page<News> query(News news,Pageable page);
 
+	/**
+	 * 根据模型中的条件高亮查询
+	 * 
+	 * @param news 模型
+	 * @param page 分页器
+	 * @return  高亮搜索分页结果
+	 */
 	Page<News> queryForHighlight(News news, Pageable page);
+	
+	/**
+	 * 查询相关度最高的几个文档
+	 * 
+	 * @param docId 文档id
+	 * @param count 相关文档个数
+	 * @return 相关文档列表
+	 */
+	List<News> queryRelated(String docId,int count);
 }

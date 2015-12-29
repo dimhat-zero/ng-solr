@@ -8,6 +8,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
 
+import com.jianla.ng.solr.model.News;
 import com.jianla.ng.solr.model.Product;
 import com.jianla.ng.solr.model.SortableProduct;
 
@@ -45,5 +46,7 @@ public interface ProductService {
 	Page<Product> find(String searchTerm, Pageable page, Sort sort);
 
 	Map<String,Long> facetQuery(String ptypeField);
+
+	List<Product> queryRelated(String docId, int count);
 
 }

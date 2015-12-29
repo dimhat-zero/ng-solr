@@ -1,6 +1,9 @@
 package com.jianla.ng.solr.repository;
 
+import java.util.List;
+
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.solr.core.query.Criteria;
@@ -17,6 +20,7 @@ import org.springframework.data.solr.repository.support.SimpleSolrRepository;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 
+import com.jianla.ng.solr.model.News;
 import com.jianla.ng.solr.model.Product;
 import com.jianla.ng.solr.model.SearchableProduct;
 import com.jianla.ng.solr.util.RepositoryUtils;
@@ -127,4 +131,10 @@ public class ProductRepositoryImpl extends SimpleSolrRepository<Product,String> 
 	     return facetResultPage; 
 	}
    
+	@Override
+	public List<Product> findRelated(String docId, int count) {
+		Query query = new SimpleQuery(new SimpleStringCriteria("id:"+docId)).setPageRequest(new PageRequest(0, count));
+		query.setRequestHandler("/mlt");
+		return getSolrOperations().queryForPage(query, Product.class).getContent();
+	}
 }

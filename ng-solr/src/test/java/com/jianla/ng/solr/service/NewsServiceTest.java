@@ -40,35 +40,35 @@ public class NewsServiceTest {
 		List<News> newsList=new ArrayList<>();
 		News news=new News();
 		news.setId("1");
-		news.setTitle("小伙注册芈月商标 只因读小说时突发奇想");
-		news.setContent("从开拍就争议不断的《芈月传》播出过半，引起的各种热门话题不断。当你还在纠结“芈”字怎么读的时候，“芈月”商标已经被人抢注了！注册商标的叫王超，是郑州一位80后的小伙子。许多人想买他的商标注册权，一个上海的老板甚至开价60万。");
-		news.setPublishOrgName("新浪娱乐");
-		news.setPublisherName("小编001");
+		news.setTitle("科比20分15铁林书豪13+6 沃克轰38分黄蜂胜湖人");
+		news.setContent("北京时间12月29日，2015-16赛季NBA常规赛继续进行，湖人背靠背做客夏洛特挑战黄蜂。全场打完，湖人98-108不敌黄蜂，遭遇4连败，而黄蜂则取得2连胜。全场具体比分：26-31、32-27、23-27、17-23（湖人在前）。");
+		news.setPublishOrgName("搜狐体育");
+		news.setPublisherName("波洛");
 		news.setPublishTime(new Date());
-		news.setTypeName("娱乐新闻");
-		news.setKeywords(Arrays.asList("key1","key2","key3"));
+		news.setTypeName("体育新闻");
+		news.setKeywords(Arrays.asList("数据","投篮点","实录"));
 		newsList.add(news);
 		
 		news=new News();
 		news.setId("2");
-		news.setTitle("2015年国际十大新闻及人物出炉");
-		news.setContent("由光明日报社和中共泉州市委联合主办、中国电信集团公司支持的第十七届“中国国际新闻论坛”年会日前在福建省泉州市举行，与会的全国40余家媒体以无记名投票方式评出2015年国际十大新闻及十大焦点人物。");
-		news.setPublishOrgName("搜狐新闻");
-		news.setPublisherName("小编001");
+		news.setTitle("科比2分钟4铁葬送比赛 掀翻林书豪玩命倒地救球");
+		news.setContent("科比在本赛季真正的巡演多数来自于东部，因为东部都是一年交手两次，所以客场之旅科比才算是真的告别演出。北京时间2015年12月29日，湖人客场挑战黄蜂，他全场20投5中拿下20分4篮板2助攻，最终湖人以98-108负于黄蜂。");
+		news.setPublishOrgName("搜狐体育");
+		news.setPublisherName("寒少");
 		news.setPublishTime(new Date());
-		news.setTypeName("时政新闻");
-		news.setKeywords(Arrays.asList("key1","key2","key4"));
+		news.setTypeName("体育新闻");
+		news.setKeywords(Arrays.asList("数据","投篮点","实录"));
 		newsList.add(news);
 		
 		news=new News();
 		news.setId("3");
-		news.setTitle("塔利班否认为抗击“伊斯兰国”与俄罗斯交换信息");
-		news.setContent("喀布尔消息：据媒体27日报道，塔利班26日否认为抗击在阿富汗境内的极端组织“伊斯兰国”而与俄罗斯交换信息，并称不在意“伊斯兰国”在阿富汗的影响力。");
+		news.setTitle("霍华德明夏五大归宿：纽约居首 留火箭仍存可能");
+		news.setContent("新季，尼克斯摆脱了去年的烂队形象，逐渐回归到季后赛争夺的行列之中。在内线，球队拥有了极具天赋的潜力新秀波尔津吉斯；在其他位置上，纽约的队员也极具拼劲儿。但如果未来，尼克斯想要争夺冠军，他们还需要对阵容进行补充，而霍华德或许正是值得他们考虑的对象。尽管目前来看，魔兽的竞技水准已出现下滑，但是在他健康且全情投入的时段，其攻防两端的威慑力，依旧不容小觑。况且，一旦明年魔兽跳出合同，纽约方面也可以尝试用更低廉的价位与他签约。");
 		news.setPublishOrgName("搜狐新闻");
-		news.setPublisherName("小编002");
+		news.setPublisherName("王晨昊");
 		news.setPublishTime(new Date());
-		news.setTypeName("时政新闻");
-		news.setKeywords(Arrays.asList("key2","key3","key4"));
+		news.setTypeName("体育新闻");
+		news.setKeywords(Arrays.asList("转会","交易"));
 		newsList.add(news);
 		
 		news=new News();
@@ -79,18 +79,18 @@ public class NewsServiceTest {
 		news.setPublisherName("小编003");
 		news.setPublishTime(new Date());
 		news.setTypeName("体育新闻");
-		news.setKeywords(Arrays.asList("key5","key3","key4"));
+		news.setKeywords(Arrays.asList("库里","mvp","勇士"));
 		newsList.add(news);
 		
 		news=new News();
 		news.setId("5");
-		news.setTitle("王思聪当街激吻 绯闻新欢又是嫩模 看旧照也是大变脸");
-		news.setContent("王思聪身边又换了新女票还在大街上热吻的新闻瞬间又火了……");
-		news.setPublishOrgName("腾讯娱乐");
+		news.setTitle("首节战报：三巨头联手力战群雄 骑士34-30太阳");
+		news.setContent("一开场两队立马进入到对攻战当中，乐福在仅仅2分18秒里就连斩5分，和他对位的布克也是当仁不让，包揽了太阳前8分中的6分，紧紧咬住比分。德拉和詹姆斯相继开火，随着杰弗森三分命中，骑士打出9-2的攻击波重新拉开分差。缺少了布莱德索的太阳外线只能依靠奈特来维持攻势，好不容易钱德勒和特里托维奇各自进账把差距缩小到只剩1分。琼斯在还剩26.9秒时又是三分命中。钱德勒最后造成犯规遗憾的是两罚不中，最终骑士首节以34-30领先太阳。乐福和詹姆斯首节均拿到5分，欧文7分。");
+		news.setPublishOrgName("腾讯体育");
 		news.setPublisherName("小编002");
 		news.setPublishTime(new Date());
-		news.setTypeName("娱乐新闻");
-		news.setKeywords(Arrays.asList("key5","key1","key6"));
+		news.setTypeName("体育新闻");
+		news.setKeywords(Arrays.asList("战报","数据","骑士"));
 		news.setAvailable(true);
 		newsList.add(news);
 		
@@ -110,6 +110,7 @@ public class NewsServiceTest {
 			logger.info(news);
 		}
 	}
+	
 	@Test
 	public void testHighlight(){
 		News news=new News();
@@ -120,7 +121,7 @@ public class NewsServiceTest {
 	
 	@Test
 	public void testQueryTerms(){
-		Page<News> newsList = newsService.query("王思聪", new PageRequest(0, 3));
+		Page<News> newsList = newsService.query("湖人", new PageRequest(0, 3));
 		print(newsList);
 	}
 	
@@ -133,8 +134,16 @@ public class NewsServiceTest {
 	
 	@Test
 	public void testQueryByKeyword(){
-		String keyword="key3";
+		String keyword="数据";
 		Page<News> newsList = newsService.queryByKeyword(keyword, new PageRequest(0, 3));
 		print(newsList);
+	}
+	
+	@Test
+	public void testQueryRelated(){
+		List<News> queryRelated = newsService.queryRelated("2", 5);
+		for(News news:queryRelated){
+			logger.info(news);
+		}
 	}
 }

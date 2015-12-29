@@ -10,6 +10,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.solr.core.query.result.FacetFieldEntry;
 
+import com.jianla.ng.solr.model.News;
 import com.jianla.ng.solr.model.Product;
 import com.jianla.ng.solr.model.SortableProduct;
 import com.jianla.ng.solr.repository.ProductRepository;
@@ -110,5 +111,10 @@ public class ProductServiceImpl implements ProductService {
 			map.put(entry.getValue(), entry.getValueCount());
 		}
 		return map;
+	}
+	
+	@Override
+	public List<Product> queryRelated(String docId, int count) {
+		return productDao.findRelated(docId, count);
 	}
 }
